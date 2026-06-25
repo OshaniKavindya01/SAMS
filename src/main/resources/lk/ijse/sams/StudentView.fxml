@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.StudentController"
+            style="-fx-background-color: #f8f5fe;">
+
+    <VBox spacing="15" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <!-- FORM SECTION -->
+        <VBox spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <Label text="Student Management"
+                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+
+            <GridPane hgap="15" vgap="10">
+                <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <TextField fx:id="txtFullName" promptText="Enter full name"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200"
+                           style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 7;"/>
+
+                <Label text="Reg Number:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <TextField fx:id="txtRegNumber" promptText="e.g. REG001"
+                           GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="200"
+                           style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 7;"/>
+
+                <Label text="Course:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <ComboBox fx:id="cmbCourse" promptText="Select course"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
+
+                <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="2"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <TextField fx:id="txtEmail" promptText="Enter email"
+                           GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="200"
+                           style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 7;"/>
+
+                <Label text="Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <TextField fx:id="txtPhone" promptText="Enter phone"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="200"
+                           style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 7;"/>
+            </GridPane>
+
+            <!-- BUTTONS -->
+            <HBox spacing="10">
+                <Button text="Add" onAction="#handleAdd"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 13;"/>
+                <Button text="Update" onAction="#handleUpdate"
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 13;"/>
+                <Button text="Delete" onAction="#handleDelete"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 13;"/>
+                <Button text="Clear" onAction="#handleClear"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 13;"/>
+            </HBox>
+        </VBox>
+
+        <!-- TABLE SECTION -->
+        <VBox spacing="8" VBox.vgrow="ALWAYS"
+              style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Student List"
+                       style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtSearch" promptText="Search..."
+                           prefWidth="200"
+                           style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 6;"/>
+            </HBox>
+
+            <TableView fx:id="tblStudents" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colName" text="Full Name" prefWidth="180"/>
+                    <TableColumn fx:id="colReg" text="Reg Number" prefWidth="120"/>
+                    <TableColumn fx:id="colCourse" text="Course" prefWidth="150"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</AnchorPane>
