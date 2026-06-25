@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.LoginController"
+            style="-fx-background-color: #f3e5f5;">
+
+    <StackPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+               AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <VBox alignment="CENTER" spacing="15" maxWidth="340"
+              style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 12; -fx-border-color: #d7bde2; -fx-border-radius: 12; -fx-border-width: 1;">
+
+            <Label text="SAMS" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <Label text="Student Attendance Management System"
+                   style="-fx-font-size: 12; -fx-text-fill: #888;" wrapText="true"/>
+
+            <VBox spacing="5" maxWidth="280">
+                <Label text="Username" style="-fx-font-size: 13; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtUsername" promptText="Enter username"
+                           style="-fx-border-color: #d7bde2; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8;"/>
+            </VBox>
+
+            <VBox spacing="5" maxWidth="280">
+                <Label text="Password" style="-fx-font-size: 13; -fx-text-fill: #555;"/>
+                <PasswordField fx:id="txtPassword" promptText="Enter password"
+                               style="-fx-border-color: #d7bde2; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8;"/>
+            </VBox>
+
+            <VBox spacing="5" maxWidth="280">
+                <Label text="Role" style="-fx-font-size: 13; -fx-text-fill: #555;"/>
+                <ComboBox fx:id="cmbRole" promptText="Select role" maxWidth="Infinity"
+                          style="-fx-border-color: #d7bde2; -fx-border-radius: 6; -fx-background-radius: 6;"/>
+            </VBox>
+
+            <Button fx:id="btnLogin" text="Login" maxWidth="280"
+                    onAction="#handleLogin"
+                    style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+            <Label text="IJSE © 2026" style="-fx-font-size: 11; -fx-text-fill: #aaa;"/>
+        </VBox>
+    </StackPane>
+</AnchorPane>
