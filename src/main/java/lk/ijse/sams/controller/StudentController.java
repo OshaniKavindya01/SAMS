@@ -1,33 +1,35 @@
 package lk.ijse.sams.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.sams.db.DBConnection;
 import lk.ijse.sams.model.Course;
-import lk.ijse.sams.model.Student;
 import java.sql.*;
 
 public class StudentController {
 
-    @FXML private TextField txtFullName, txtRegNumber, txtEmail, txtPhone, txtSearch;
+    @FXML private TextField txtFullName, txtEmail, txtPhone, txtSearch;
+    @FXML private TextField txtRegNumber;
     @FXML private ComboBox<Course> cmbCourse;
     @FXML private TableView<ObservableList<String>> tblStudents;
-    @FXML private TableColumn<ObservableList<String>, String> colId, colName, colReg, colCourse, colEmail, colPhone;
+    @FXML private TableColumn<ObservableList<String>, String> colId, colName, colRegNo, colCourse, colEmail, colPhone;
 
     @FXML
     public void initialize() {
-        colId.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().get(0)));
-        colName.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().get(1)));
-        colReg.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().get(2)));
-        colCourse.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().get(3)));
-        colEmail.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().get(4)));
-        colPhone.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().get(5)));
+        colId.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(0)));
+        colName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(1)));
+        colRegNo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(2)));
+        colCourse.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(3)));
+        colEmail.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(4)));
+        colPhone.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(5)));
 
         loadCourses();
         loadStudents();
+
+        cmbCourse.setOnAction(e -> generateRegNumber());
 
         tblStudents.getSelectionModel().selectedItemProperty().addListener((obs, old, selected) -> {
             if (selected != null) {
@@ -44,13 +46,23 @@ public class StudentController {
             }
         });
 
-        txtSearch.textProperty().addListener((obs, old, val) -> {
-            try {
-                loadStudentsFiltered(val);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        txtSearch.textProperty().addListener((obs, old, val) -> loadStudentsFiltered(val));
+    }
+
+    private void generateRegNumber() {
+        Course selected = cmbCourse.getValue();
+        if (selected == null) return;
+        try {
+            Connection con = DBConnection.getInstance().getConnection();
+            PreparedStatement pst = con.prepareStatement(
+                "SELECT COUNT(*) FROM students WHERE course_id=?");
+            pst.setInt(1, selected.getCourseId());
+            ResultSet rs = pst.executeQuery();
+            int count = 0;
+            if (rs.next()) count = rs.getInt(1);
+            String regNo = selected.getCourseCode() + "-" + String.format("%03d", count + 1);
+            txtRegNumber.setText(regNo);
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     private void loadCourses() {
@@ -63,9 +75,7 @@ public class StudentController {
                         rs.getString("course_name"), rs.getString("course_code")));
             }
             cmbCourse.setItems(courses);
-        } catch (Exception e) {
-            showAlert("Error", e.getMessage());
-        }
+        } catch (Exception e) { showAlert("Error", e.getMessage()); }
     }
 
     private void loadStudents() {
@@ -81,14 +91,12 @@ public class StudentController {
                 row.add(rs.getString("full_name"));
                 row.add(rs.getString("reg_number"));
                 row.add(rs.getString("course_name"));
-                row.add(rs.getString("email"));
-                row.add(rs.getString("phone"));
+                row.add(rs.getString("email") != null ? rs.getString("email") : "");
+                row.add(rs.getString("phone") != null ? rs.getString("phone") : "");
                 data.add(row);
             }
             tblStudents.setItems(data);
-        } catch (Exception e) {
-            showAlert("Error", e.getMessage());
-        }
+        } catch (Exception e) { showAlert("Error", e.getMessage()); }
     }
 
     private void loadStudentsFiltered(String keyword) {
@@ -108,38 +116,32 @@ public class StudentController {
                 row.add(rs.getString("full_name"));
                 row.add(rs.getString("reg_number"));
                 row.add(rs.getString("course_name"));
-                row.add(rs.getString("email"));
-                row.add(rs.getString("phone"));
+                row.add(rs.getString("email") != null ? rs.getString("email") : "");
+                row.add(rs.getString("phone") != null ? rs.getString("phone") : "");
                 data.add(row);
             }
             tblStudents.setItems(data);
-        } catch (Exception e) {
-            showAlert("Error", e.getMessage());
-        }
+        } catch (Exception e) { showAlert("Error", e.getMessage()); }
     }
 
     @FXML
     private void handleAdd() {
-        if (txtFullName.getText().isEmpty() || txtRegNumber.getText().isEmpty() || cmbCourse.getValue() == null) {
-            showAlert("Error", "Full name, reg number and course are required!");
-            return;
+        if (txtFullName.getText().isEmpty() || cmbCourse.getValue() == null) {
+            showAlert("Error", "Full name and course are required!"); return;
         }
         try {
             Connection con = DBConnection.getInstance().getConnection();
-            String sql = "INSERT INTO students (full_name, reg_number, course_id, email, phone) VALUES (?,?,?,?,?)";
-            PreparedStatement pst = con.prepareStatement(sql);
+            PreparedStatement pst = con.prepareStatement(
+                "INSERT INTO students (full_name, reg_number, course_id, email, phone) VALUES (?,?,?,?,?)");
             pst.setString(1, txtFullName.getText());
             pst.setString(2, txtRegNumber.getText());
             pst.setInt(3, cmbCourse.getValue().getCourseId());
             pst.setString(4, txtEmail.getText());
             pst.setString(5, txtPhone.getText());
             pst.executeUpdate();
-            showAlert("Success", "Student added successfully!");
-            loadStudents();
-            handleClear();
-        } catch (Exception e) {
-            showAlert("Error", e.getMessage());
-        }
+            showAlert("Success", "Student added!\nReg Number: " + txtRegNumber.getText());
+            loadStudents(); handleClear();
+        } catch (Exception e) { showAlert("Error", e.getMessage()); }
     }
 
     @FXML
@@ -148,8 +150,8 @@ public class StudentController {
         if (selected == null) { showAlert("Error", "Please select a student!"); return; }
         try {
             Connection con = DBConnection.getInstance().getConnection();
-            String sql = "UPDATE students SET full_name=?, reg_number=?, course_id=?, email=?, phone=? WHERE student_id=?";
-            PreparedStatement pst = con.prepareStatement(sql);
+            PreparedStatement pst = con.prepareStatement(
+                "UPDATE students SET full_name=?, reg_number=?, course_id=?, email=?, phone=? WHERE student_id=?");
             pst.setString(1, txtFullName.getText());
             pst.setString(2, txtRegNumber.getText());
             pst.setInt(3, cmbCourse.getValue().getCourseId());
@@ -158,11 +160,8 @@ public class StudentController {
             pst.setInt(6, Integer.parseInt(selected.get(0)));
             pst.executeUpdate();
             showAlert("Success", "Student updated!");
-            loadStudents();
-            handleClear();
-        } catch (Exception e) {
-            showAlert("Error", e.getMessage());
-        }
+            loadStudents(); handleClear();
+        } catch (Exception e) { showAlert("Error", e.getMessage()); }
     }
 
     @FXML
@@ -171,15 +170,13 @@ public class StudentController {
         if (selected == null) { showAlert("Error", "Please select a student!"); return; }
         try {
             Connection con = DBConnection.getInstance().getConnection();
-            PreparedStatement pst = con.prepareStatement("DELETE FROM students WHERE student_id=?");
+            PreparedStatement pst = con.prepareStatement(
+                "DELETE FROM students WHERE student_id=?");
             pst.setInt(1, Integer.parseInt(selected.get(0)));
             pst.executeUpdate();
             showAlert("Success", "Student deleted!");
-            loadStudents();
-            handleClear();
-        } catch (Exception e) {
-            showAlert("Error", e.getMessage());
-        }
+            loadStudents(); handleClear();
+        } catch (Exception e) { showAlert("Error", e.getMessage()); }
     }
 
     @FXML

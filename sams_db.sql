@@ -116,13 +116,13 @@ INSERT INTO lecturer_subjects VALUES
 (7, 3, 7), (8, 3, 8), (9, 3, 9);
 
 INSERT INTO students VALUES
-(1, 'Amal Perera', 'DIT001-001', 1, 'amal@email.com', '0771234567'),
-(2, 'Nimali Silva', 'DIT001-002', 1, 'nimali@email.com', '0772345678'),
-(3, 'Kasun Fernando', 'DIT001-003', 1, 'kasun@email.com', '0773456789'),
-(4, 'Sachini Dissanayake', 'HDSE001-001', 2, 'sachini@email.com', '0774567890'),
-(5, 'Ruwan Bandara', 'HDSE001-002', 2, 'ruwan@email.com', '0775678901'),
-(6, 'Tharaka Jayasena', 'HDNE001-001', 3, 'tharaka@email.com', '0776789012'),
-(7, 'Chamari Wickramasinghe', 'HDNE001-002', 3, 'chamari@email.com', '0777890123');
+(1, 'Amal Perera', 'DIT001-001', 1, 'amal.perera@gmail.com', '0771234567'),
+(2, 'Nimali Silva', 'DIT001-002', 1, 'nimali.silva@gmail.com', '0772345678'),
+(3, 'Kasun Fernando', 'DIT001-003', 1, 'kasun.fernando@gmail.com', '0773456789'),
+(4, 'Sachini Dissanayake', 'HDSE001-001', 2, 'sachini.dissanayake@gmail.com', '0774567890'),
+(5, 'Ruwan Bandara', 'HDSE001-002', 2, 'ruwan.bandara@gmail.com', '0775678901'),
+(6, 'Tharaka Jayasena', 'HDNE001-001', 3, 'tharaka.jayasena@gmail.com', '0776789012'),
+(7, 'Chamari Wickramasinghe', 'HDNE001-002', 3, 'chamari.wickramasinghe@gmail.com', '0777890123');
 
 INSERT INTO users VALUES
 (1, 'admin', 'admin123', 'ADMIN', NULL, 'admin@ijse.lk'),
