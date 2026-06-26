@@ -84,7 +84,7 @@ shared instance across the application.
 
 ## Features
 
-### 👤 Admin Portal
+### Admin Portal
 - **Course Management** — Add, update, and delete courses
 - **Subject Management** — Manage subjects linked to each course
 - **Student Management** — Register students with course enrollment and contact details
@@ -98,6 +98,34 @@ shared instance across the application.
 - **My Subjects** — View only subjects assigned to the logged-in lecturer
 - **My Schedule** — View only sessions assigned to the logged-in lecturer
 - **Mark Attendance** — Mark and update attendance for their own sessions only
+
+---
+
+## Screenshots
+
+### Login Screen
+
+
+### Admin Dashboard
+
+
+### Student Management
+
+
+### Class Schedule
+
+
+### Attendance Marking
+
+
+### Attendance Reports
+
+
+### My Profile
+
+
+### Lecturer Portal
+
 
 ---
 
@@ -146,6 +174,5 @@ src/main/resources/lk/ijse/sams/
 ---
 
 ## Author
-
-**Oshani Kavindya**  
+*Oshani Kavindya** 
 ---
