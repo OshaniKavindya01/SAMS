@@ -6,19 +6,24 @@
 CREATE DATABASE IF NOT EXISTS sams_db;
 USE sams_db;
 
+-- Users table
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
-    role ENUM('ADMIN','LECTURER') NOT NULL
+    role ENUM('ADMIN','LECTURER') NOT NULL,
+    lecturer_id INT NULL,
+    email VARCHAR(100) NULL
 );
 
+-- Courses table
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT PRIMARY KEY,
     course_name VARCHAR(100) NOT NULL,
     course_code VARCHAR(20) NOT NULL UNIQUE
 );
 
+-- Subjects table
 CREATE TABLE subjects (
     subject_id INT AUTO_INCREMENT PRIMARY KEY,
     subject_name VARCHAR(100) NOT NULL,
@@ -27,6 +32,7 @@ CREATE TABLE subjects (
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 
+-- Students table
 CREATE TABLE students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -37,6 +43,7 @@ CREATE TABLE students (
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 
+-- Lecturers table
 CREATE TABLE lecturers (
     lecturer_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -44,6 +51,7 @@ CREATE TABLE lecturers (
     phone VARCHAR(20)
 );
 
+-- Lecturer Subject Assignments
 CREATE TABLE lecturer_subjects (
     assignment_id INT AUTO_INCREMENT PRIMARY KEY,
     lecturer_id INT NOT NULL,
@@ -52,6 +60,7 @@ CREATE TABLE lecturer_subjects (
     FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
 );
 
+-- Class Sessions table
 CREATE TABLE class_sessions (
     session_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -65,6 +74,7 @@ CREATE TABLE class_sessions (
     FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id)
 );
 
+-- Attendance table
 CREATE TABLE attendance (
     attendance_id INT AUTO_INCREMENT PRIMARY KEY,
     session_id INT NOT NULL,
@@ -75,9 +85,9 @@ CREATE TABLE attendance (
     UNIQUE(session_id, student_id)
 );
 
--- Sample Data
-INSERT INTO users VALUES (1, 'admin', 'admin123', 'ADMIN');
-INSERT INTO users VALUES (2, 'lecturer1', 'lec123', 'LECTURER');
+-- ============================================
+-- SAMPLE DATA
+-- ============================================
 
 INSERT INTO courses VALUES
 (1, 'Diploma in Information Technology', 'DIT001'),
@@ -113,3 +123,15 @@ INSERT INTO students VALUES
 (5, 'Ruwan Bandara', 'HDSE001-002', 2, 'ruwan@email.com', '0775678901'),
 (6, 'Tharaka Jayasena', 'HDNE001-001', 3, 'tharaka@email.com', '0776789012'),
 (7, 'Chamari Wickramasinghe', 'HDNE001-002', 3, 'chamari@email.com', '0777890123');
+
+INSERT INTO users VALUES
+(1, 'admin', 'admin123', 'ADMIN', NULL, 'admin@ijse.lk'),
+(2, 'nimal.jayawardena.lec', 'nimal123', 'LECTURER', 1, NULL),
+(3, 'dilani.rathnayake.lec', 'dilani123', 'LECTURER', 2, NULL),
+(4, 'kasun.perera.lec', 'kasun123', 'LECTURER', 3, NULL);
+
+INSERT INTO class_sessions VALUES
+(1, 1, 1, 1, '2026-06-23', '09:00:00', '11:00:00'),
+(2, 1, 2, 1, '2026-06-24', '10:00:00', '12:00:00'),
+(3, 2, 4, 2, '2026-06-25', '14:00:00', '16:00:00'),
+(4, 3, 7, 3, '2026-06-26', '09:00:00', '11:00:00');
