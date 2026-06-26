@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<BorderPane prefHeight="650.0" prefWidth="1000.0"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.LecturerDashboardController">
+
+    <left>
+        <VBox prefWidth="220"
+              style="-fx-background-color: #7d3c98; -fx-border-color: #6c3483; -fx-border-width: 0 1 0 0;">
+
+            <VBox alignment="CENTER" spacing="4"
+                  style="-fx-padding: 0 15; -fx-border-color: #6c3483; -fx-border-width: 0 0 1 0; -fx-min-height: 80; -fx-max-height: 80;">
+                <Label text="SAMS"
+                       style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Lecturer Portal"
+                       style="-fx-font-size: 10; -fx-text-fill: #e8daef;"/>
+            </VBox>
+
+            <VBox spacing="2" style="-fx-padding: 12 10 12 10;">
+                <Button maxWidth="Infinity" onAction="#loadMySubjects"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <FontIcon iconLiteral="fas-book-open" iconSize="16" iconColor="white"/>
+                            <Label text="My Subjects" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button maxWidth="Infinity" onAction="#loadMySchedule"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <FontIcon iconLiteral="fas-calendar-alt" iconSize="16" iconColor="white"/>
+                            <Label text="My Schedule" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Button maxWidth="Infinity" onAction="#loadAttendance"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <FontIcon iconLiteral="fas-clipboard-check" iconSize="16" iconColor="white"/>
+                            <Label text="Mark Attendance" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+            </VBox>
+
+            <Pane VBox.vgrow="ALWAYS"/>
+
+            <VBox style="-fx-padding: 10 10 16 10; -fx-border-color: #6c3483; -fx-border-width: 1 0 0 0;">
+                <Button maxWidth="Infinity" onAction="#handleLogout"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <FontIcon iconLiteral="fas-sign-out-alt" iconSize="16" iconColor="#e8daef"/>
+                            <Label text="Logout" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox style="-fx-background-color: #f8f5fe;">
+            <HBox style="-fx-background-color: white; -fx-padding: 0 24; -fx-border-color: #c9a8e0; -fx-border-width: 0 0 1 0; -fx-min-height: 80; -fx-max-height: 80;"
+                  alignment="CENTER_LEFT">
+                <Label fx:id="lblTitle" text="My Subjects"
+                       style="-fx-font-size: 17; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            </HBox>
+            <AnchorPane fx:id="contentPane" VBox.vgrow="ALWAYS"
+                        style="-fx-background-color: #f8f5fe; -fx-padding: 20;"/>
+        </VBox>
+    </center>
+</BorderPane>

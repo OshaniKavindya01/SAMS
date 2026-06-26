@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.MySubjectsController"
+            style="-fx-background-color: #f8f5fe;">
+
+    <VBox spacing="15" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <VBox spacing="8"
+              style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <Label text="My Assigned Subjects"
+                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <TableView fx:id="tblSubjects" VBox.vgrow="ALWAYS" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="colSubject" text="Subject Name" prefWidth="250"/>
+                    <TableColumn fx:id="colCode" text="Code" prefWidth="120"/>
+                    <TableColumn fx:id="colCourse" text="Course" prefWidth="250"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.ReportController"
+            style="-fx-background-color: #f8f5fe;">
+
+    <VBox spacing="15" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <VBox spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <Label text="Attendance Reports" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="Student:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <ComboBox fx:id="cmbStudent" promptText="All Students" prefWidth="180"/>
+
+                <Label text="Subject:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <ComboBox fx:id="cmbSubject" promptText="All Subjects" prefWidth="180"/>
+
+                <Label text="From:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <DatePicker fx:id="dpFrom" prefWidth="150"/>
+
+                <Label text="To:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <DatePicker fx:id="dpTo" prefWidth="150"/>
+
+                <Button text="Search" onAction="#handleSearch"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                <Button text="Reset" onAction="#handleReset"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand;"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="8" VBox.vgrow="ALWAYS"
+              style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <Label text="Report Results" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <TableView fx:id="tblReport" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colStudent" text="Student" prefWidth="180"/>
+                    <TableColumn fx:id="colSubject" text="Subject" prefWidth="150"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="110"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</AnchorPane>

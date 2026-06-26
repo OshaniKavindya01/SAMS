@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.MyScheduleController"
+            style="-fx-background-color: #f8f5fe;">
+
+    <VBox spacing="15" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <VBox spacing="8"
+              style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <Label text="My Scheduled Classes"
+                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <TableView fx:id="tblSchedule" VBox.vgrow="ALWAYS" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colId" text="Session" prefWidth="70"/>
+                    <TableColumn fx:id="colSubject" text="Subject" prefWidth="200"/>
+                    <TableColumn fx:id="colCourse" text="Course" prefWidth="200"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="120"/>
+                    <TableColumn fx:id="colStart" text="Start" prefWidth="80"/>
+                    <TableColumn fx:id="colEnd" text="End" prefWidth="80"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</AnchorPane>
