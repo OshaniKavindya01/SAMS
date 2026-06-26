@@ -1,4 +1,4 @@
-##SAMS - Student Attendance Management System
+# SAMS - Student Attendance Management System
 
 A Java-based desktop application for managing student attendance in educational institutions, developed as part of the Object-Oriented Programming coursework at IJSE.
 
