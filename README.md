@@ -104,28 +104,43 @@ shared instance across the application.
 ## Screenshots
 
 ### Login Screen
-
-
-### Admin Dashboard
-
+![Login](screenshots/login.png)
 
 ### Student Management
+![Students](screenshots/students_module.png)
 
+### Course Management
+![Courses](screenshots/courses_module.png)
+
+### Subject Management
+![Subjects](screenshots/subjects_module.png)
+
+### Lecturer Management
+![Lecturers](screenshots/lecturers_module.png)
 
 ### Class Schedule
-
+![Schedule](screenshots/schedule_module.png)
 
 ### Attendance Marking
-
+![Attendance](screenshots/attendance_module.png)
 
 ### Attendance Reports
-
+![Reports](screenshots/reports_module.png)
 
 ### My Profile
-
+![Profile](screenshots/profile.png)
 
 ### Lecturer Portal
+![Lecturer Login](screenshots/lec_login.png)
 
+### Lecturer - My Subjects
+![My Subjects](screenshots/my_subjects.png)
+
+### Lecturer - My Schedule
+![My Schedule](screenshots/my_schedule.png)
+
+### Lecturer - Mark Attendance
+![Mark Attendance](screenshots/mark_attendance.png)
 
 ---
 
