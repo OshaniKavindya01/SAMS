@@ -82,4 +82,4 @@ users, courses, subjects, students, lecturers, lecturer_subjects, class_sessions
 ## Author
 
 Oshani Kavindya
-IJSE - Object-Oriented Programming Coursework 2026
+
