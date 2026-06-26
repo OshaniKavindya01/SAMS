@@ -10,23 +10,47 @@ import javafx.stage.Stage;
 import lk.ijse.sams.db.DBConnection;
 import lk.ijse.sams.model.SessionManager;
 import java.sql.*;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 public class LoginController {
 
     @FXML private TextField txtUsername;
     @FXML private PasswordField txtPassword;
+    @FXML private TextField txtPasswordVisible;
     @FXML private ComboBox<String> cmbRole;
     @FXML private Button btnLogin;
+    @FXML private Button btnTogglePassword;
+    @FXML private FontIcon eyeIcon;
+
+    private boolean passwordVisible = false;
 
     @FXML
     public void initialize() {
         cmbRole.setItems(FXCollections.observableArrayList("ADMIN", "LECTURER"));
+        txtPasswordVisible.managedProperty().bind(txtPasswordVisible.visibleProperty());
+        txtPassword.managedProperty().bind(txtPassword.visibleProperty());
+    }
+
+    @FXML
+    private void togglePassword() {
+        passwordVisible = !passwordVisible;
+        if (passwordVisible) {
+            txtPasswordVisible.setText(txtPassword.getText());
+            txtPasswordVisible.setVisible(true);
+            txtPassword.setVisible(false);
+            eyeIcon.setIconLiteral("fas-eye");
+        } else {
+            txtPassword.setText(txtPasswordVisible.getText());
+            txtPassword.setVisible(true);
+            txtPasswordVisible.setVisible(false);
+            eyeIcon.setIconLiteral("fas-eye-slash");
+        }
     }
 
     @FXML
     private void handleLogin() {
         String username = txtUsername.getText().trim();
-        String password = txtPassword.getText().trim();
+        String password = passwordVisible ? txtPasswordVisible.getText().trim() : txtPassword.getText().trim();
         String role = cmbRole.getValue();
 
         if (username.isEmpty() || password.isEmpty() || role == null) {

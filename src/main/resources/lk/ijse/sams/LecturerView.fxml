@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="lk.ijse.sams.controller.LecturerController"
@@ -11,7 +10,10 @@
           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
         <VBox spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
-            <Label text="Lecturer Management" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <Label text="Lecturer Management"
+                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <Label text="Username and password are auto-generated when adding a lecturer."
+                   style="-fx-font-size: 11; -fx-text-fill: #999;"/>
 
             <GridPane hgap="15" vgap="10">
                 <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"
@@ -48,7 +50,8 @@
         <VBox spacing="8" VBox.vgrow="ALWAYS"
               style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Lecturer List" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+                <Label text="Lecturer List"
+                       style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
                 <Pane HBox.hgrow="ALWAYS"/>
                 <TextField fx:id="txtSearch" promptText="Search..."
                            prefWidth="200"
@@ -56,10 +59,11 @@
             </HBox>
             <TableView fx:id="tblLecturers" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
-                    <TableColumn fx:id="colName" text="Full Name" prefWidth="200"/>
-                    <TableColumn fx:id="colEmail" text="Email" prefWidth="220"/>
-                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="150"/>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colName" text="Full Name" prefWidth="180"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="120"/>
+                    <TableColumn fx:id="colUsername" text="Username" prefWidth="180"/>
                 </columns>
             </TableView>
         </VBox>

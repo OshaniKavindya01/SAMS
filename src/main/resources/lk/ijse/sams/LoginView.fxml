@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -28,8 +27,20 @@
 
             <VBox spacing="5" maxWidth="280">
                 <Label text="Password" style="-fx-font-size: 13; -fx-text-fill: #555;"/>
-                <PasswordField fx:id="txtPassword" promptText="Enter password"
-                               style="-fx-border-color: #d7bde2; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8;"/>
+                <StackPane>
+                    <PasswordField fx:id="txtPassword" promptText="Enter password"
+                                   style="-fx-border-color: #d7bde2; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8;"/>
+                    <TextField fx:id="txtPasswordVisible" promptText="Enter password"
+                               style="-fx-border-color: #d7bde2; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 8;"
+                               visible="false" managed="false"/>
+                    <Button fx:id="btnTogglePassword" onAction="#togglePassword"
+                            style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 0 8 0 0;"
+                            StackPane.alignment="CENTER_RIGHT">
+                        <graphic>
+                            <FontIcon fx:id="eyeIcon" iconLiteral="fas-eye-slash" iconSize="14" iconColor="#999"/>
+                        </graphic>
+                    </Button>
+                </StackPane>
             </VBox>
 
             <VBox spacing="5" maxWidth="280">

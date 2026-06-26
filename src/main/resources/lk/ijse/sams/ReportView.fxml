@@ -11,21 +11,30 @@
           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
         <VBox spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
-            <Label text="Attendance Reports" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <Label text="Attendance Reports"
+                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
 
-            <HBox spacing="15" alignment="CENTER_LEFT">
-                <Label text="Student:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
-                <ComboBox fx:id="cmbStudent" promptText="All Students" prefWidth="180"/>
+            <GridPane hgap="15" vgap="10">
+                <Label text="Student:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <ComboBox fx:id="cmbStudent" promptText="All Students"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200"/>
 
-                <Label text="Subject:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
-                <ComboBox fx:id="cmbSubject" promptText="All Subjects" prefWidth="180"/>
+                <Label text="Subject:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <ComboBox fx:id="cmbSubject" promptText="All Subjects"
+                          GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="200"/>
 
-                <Label text="From:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
-                <DatePicker fx:id="dpFrom" prefWidth="150"/>
+                <Label text="From:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <DatePicker fx:id="dpFrom" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
 
-                <Label text="To:" style="-fx-text-fill: #555; -fx-font-size: 13;"/>
-                <DatePicker fx:id="dpTo" prefWidth="150"/>
+                <Label text="To:" GridPane.rowIndex="1" GridPane.columnIndex="2"
+                       style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                <DatePicker fx:id="dpTo" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="200"/>
+            </GridPane>
 
+            <HBox spacing="10">
                 <Button text="Search" onAction="#handleSearch"
                         style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand;"/>
                 <Button text="Reset" onAction="#handleReset"
@@ -35,13 +44,14 @@
 
         <VBox spacing="8" VBox.vgrow="ALWAYS"
               style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
-            <Label text="Report Results" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+            <Label text="Report Results"
+                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
             <TableView fx:id="tblReport" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="colStudent" text="Student" prefWidth="180"/>
-                    <TableColumn fx:id="colSubject" text="Subject" prefWidth="150"/>
-                    <TableColumn fx:id="colDate" text="Date" prefWidth="110"/>
-                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="colStudent" text="Student" prefWidth="200"/>
+                    <TableColumn fx:id="colSubject" text="Subject" prefWidth="180"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="120"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="120"/>
                 </columns>
             </TableView>
         </VBox>
