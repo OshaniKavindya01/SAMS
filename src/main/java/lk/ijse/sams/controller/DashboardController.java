@@ -4,51 +4,52 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import java.util.Arrays;
+import java.util.List;
 
 public class DashboardController {
 
     @FXML private AnchorPane contentPane;
     @FXML private Label lblTitle;
+    @FXML private Button btnStudents, btnCourses, btnSubjects, btnLecturers, btnSchedule, btnAttendance, btnReports;
+
+    private static final String ACTIVE_STYLE = "-fx-background-color: white; -fx-text-fill: #8e44ad; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;";
+    private static final String NORMAL_STYLE = "-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;";
+
+    private List<Button> menuButtons;
 
     @FXML
     public void initialize() {
-        loadView("StudentView", "Students");
+        menuButtons = Arrays.asList(btnStudents, btnCourses, btnSubjects, btnLecturers, btnSchedule, btnAttendance, btnReports);
+        loadView("StudentView", "Students", btnStudents);
     }
 
     @FXML
-    private void loadStudents() {
-        loadView("StudentView", "Students");
-    }
+    private void loadStudents() { loadView("StudentView", "Students", btnStudents); }
 
     @FXML
-    private void loadCourses() {
-        loadView("CourseView", "Courses");
-    }
+    private void loadCourses() { loadView("CourseView", "Courses", btnCourses); }
 
     @FXML
-    private void loadLecturers() {
-        loadView("LecturerView", "Lecturers");
-    }
+    private void loadSubjects() { loadView("SubjectView", "Subjects", btnSubjects); }
 
     @FXML
-    private void loadSchedule() {
-        loadView("ScheduleView", "Class Schedule");
-    }
+    private void loadLecturers() { loadView("LecturerView", "Lecturers", btnLecturers); }
 
     @FXML
-    private void loadAttendance() {
-        loadView("AttendanceView", "Attendance");
-    }
+    private void loadSchedule() { loadView("ScheduleView", "Class Schedule", btnSchedule); }
 
     @FXML
-    private void loadReports() {
-        loadView("ReportView", "Attendance Reports");
-    }
+    private void loadAttendance() { loadView("AttendanceView", "Attendance", btnAttendance); }
 
-    private void loadView(String fxmlName, String title) {
+    @FXML
+    private void loadReports() { loadView("ReportView", "Attendance Reports", btnReports); }
+
+    private void loadView(String fxmlName, String title, Button activeBtn) {
         try {
             FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/lk/ijse/sams/" + fxmlName + ".fxml"));
@@ -60,9 +61,17 @@ public class DashboardController {
             AnchorPane.setRightAnchor(root, 0.0);
             contentPane.getChildren().add(root);
             lblTitle.setText(title);
+            setActiveButton(activeBtn);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void setActiveButton(Button activeBtn) {
+        for (Button btn : menuButtons) {
+            btn.setStyle(NORMAL_STYLE);
+        }
+        activeBtn.setStyle(ACTIVE_STYLE);
     }
 
     @FXML

@@ -14,87 +14,71 @@
 
             <VBox alignment="CENTER" spacing="4"
                   style="-fx-padding: 0 15; -fx-border-color: #6c3483; -fx-border-width: 0 0 1 0; -fx-min-height: 80; -fx-max-height: 80;">
-                <Label text="SAMS"
-                       style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label text="Attendance Management"
-                       style="-fx-font-size: 10; -fx-text-fill: #e8daef;"/>
+                <Label text="SAMS" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Admin Portal" style="-fx-font-size: 10; -fx-text-fill: #e8daef;"/>
             </VBox>
 
             <VBox spacing="2" style="-fx-padding: 12 10 12 10;">
-                <Button fx:id="btnStudents" maxWidth="Infinity"
-                        onAction="#loadStudents"
-                        style="-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-font-size: 13; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-user-graduate" iconSize="16" iconColor="white"/>
-                            <Label text="Students" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                <Button fx:id="btnStudents" maxWidth="Infinity" onAction="#loadStudents"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-user-graduate" iconSize="16" iconColor="white"/>
+                        <Label text="Students" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
-                <Button fx:id="btnCourses" maxWidth="Infinity"
-                        onAction="#loadCourses"
-                        style="-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-font-size: 13; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-book" iconSize="16" iconColor="white"/>
-                            <Label text="Courses" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                <Button fx:id="btnCourses" maxWidth="Infinity" onAction="#loadCourses"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-book" iconSize="16" iconColor="white"/>
+                        <Label text="Courses" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
-                <Button fx:id="btnLecturers" maxWidth="Infinity"
-                        onAction="#loadLecturers"
-                        style="-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-font-size: 13; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-chalkboard-teacher" iconSize="16" iconColor="white"/>
-                            <Label text="Lecturers" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                <Button fx:id="btnSubjects" maxWidth="Infinity" onAction="#loadSubjects"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-book-open" iconSize="16" iconColor="white"/>
+                        <Label text="Subjects" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
-                <Button fx:id="btnSchedule" maxWidth="Infinity"
-                        onAction="#loadSchedule"
-                        style="-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-font-size: 13; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-calendar-alt" iconSize="16" iconColor="white"/>
-                            <Label text="Class Schedule" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                <Button fx:id="btnLecturers" maxWidth="Infinity" onAction="#loadLecturers"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-chalkboard-teacher" iconSize="16" iconColor="white"/>
+                        <Label text="Lecturers" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
-                <Button fx:id="btnAttendance" maxWidth="Infinity"
-                        onAction="#loadAttendance"
-                        style="-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-font-size: 13; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-clipboard-check" iconSize="16" iconColor="white"/>
-                            <Label text="Attendance" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                <Button fx:id="btnSchedule" maxWidth="Infinity" onAction="#loadSchedule"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-calendar-alt" iconSize="16" iconColor="white"/>
+                        <Label text="Class Schedule" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
-                <Button fx:id="btnReports" maxWidth="Infinity"
-                        onAction="#loadReports"
-                        style="-fx-background-color: transparent; -fx-text-fill: #e8daef; -fx-font-size: 13; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-chart-bar" iconSize="16" iconColor="white"/>
-                            <Label text="Reports" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                <Button fx:id="btnAttendance" maxWidth="Infinity" onAction="#loadAttendance"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-clipboard-check" iconSize="16" iconColor="white"/>
+                        <Label text="Attendance" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
+                </Button>
+                <Button fx:id="btnReports" maxWidth="Infinity" onAction="#loadReports"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-chart-bar" iconSize="16" iconColor="white"/>
+                        <Label text="Reports" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
             </VBox>
 
             <Pane VBox.vgrow="ALWAYS"/>
 
             <VBox style="-fx-padding: 10 10 16 10; -fx-border-color: #6c3483; -fx-border-width: 1 0 0 0;">
-                <Button maxWidth="Infinity"
-                        onAction="#handleLogout"
+                <Button maxWidth="Infinity" onAction="#handleLogout"
                         style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
-                    <graphic>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <FontIcon iconLiteral="fas-sign-out-alt" iconSize="16" iconColor="#e8daef"/>
-                            <Label text="Logout" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
-                        </HBox>
-                    </graphic>
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-sign-out-alt" iconSize="16" iconColor="#e8daef"/>
+                        <Label text="Logout" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
                 </Button>
             </VBox>
         </VBox>
