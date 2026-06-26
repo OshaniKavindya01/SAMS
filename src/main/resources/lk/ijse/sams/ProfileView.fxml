@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.sams.controller.ProfileController"
+            style="-fx-background-color: #f8f5fe;">
+
+    <ScrollPane fitToWidth="true" 
+                AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                style="-fx-background-color: transparent; -fx-background: transparent;">
+
+        <VBox spacing="20" style="-fx-padding: 10;">
+
+            <VBox spacing="20" style="-fx-background-color: white; -fx-padding: 30; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <Label text="My Profile"
+                       style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+
+                <GridPane hgap="20" vgap="15">
+                    <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-text-fill: #555; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                    <TextField fx:id="txtUsername" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                               prefWidth="280" editable="false"
+                               style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8; -fx-background-color: #f9f9f9;"/>
+
+                    <Label text="Role:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           style="-fx-text-fill: #555; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                    <TextField fx:id="txtRole" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               prefWidth="280" editable="false"
+                               style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8; -fx-background-color: #f9f9f9;"/>
+
+                    <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                           style="-fx-text-fill: #555; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                    <TextField fx:id="txtEmail" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                               prefWidth="280" promptText="Enter email"
+                               style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"/>
+                </GridPane>
+
+                <HBox spacing="10">
+                    <Button text="Update Profile" onAction="#handleUpdate"
+                            style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 30; -fx-border-color: #e0c8f0; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <Label text="Change Password"
+                       style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+
+                <GridPane hgap="20" vgap="15">
+                    <Label text="Current Password:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                    <PasswordField fx:id="txtCurrentPassword" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                   prefWidth="280" promptText="Enter current password"
+                                   style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"/>
+
+                    <Label text="New Password:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                    <PasswordField fx:id="txtNewPassword" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                   prefWidth="280" promptText="Enter new password"
+                                   style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"/>
+
+                    <Label text="Confirm Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                           style="-fx-text-fill: #555; -fx-font-size: 13;"/>
+                    <PasswordField fx:id="txtConfirmPassword" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                   prefWidth="280" promptText="Confirm new password"
+                                   style="-fx-border-color: #e0c8f0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"/>
+                </GridPane>
+
+                <HBox spacing="10">
+                    <Button text="Change Password" onAction="#handleChangePassword"
+                            style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

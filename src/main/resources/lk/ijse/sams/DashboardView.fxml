@@ -72,7 +72,14 @@
 
             <Pane VBox.vgrow="ALWAYS"/>
 
-            <VBox style="-fx-padding: 10 10 16 10; -fx-border-color: #6c3483; -fx-border-width: 1 0 0 0;">
+            <VBox style="-fx-padding: 10 10 16 10; -fx-border-color: #6c3483; -fx-border-width: 1 0 0 0;" spacing="2">
+                <Button fx:id="btnProfile" maxWidth="Infinity" onAction="#loadProfile"
+                        style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
+                    <graphic><HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-user-circle" iconSize="16" iconColor="#e8daef"/>
+                        <Label text="My Profile" style="-fx-text-fill: #e8daef; -fx-font-size: 13;"/>
+                    </HBox></graphic>
+                </Button>
                 <Button maxWidth="Infinity" onAction="#handleLogout"
                         style="-fx-background-color: transparent; -fx-padding: 10 15; -fx-alignment: CENTER-LEFT; -fx-cursor: hand; -fx-background-radius: 6;">
                     <graphic><HBox spacing="10" alignment="CENTER_LEFT">
